@@ -4,12 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const GamePage = () => {
-  const [position, setPosition] = useState({ x: 100, y: 100 });
+  const [position, setPosition] = useState({ x: 50, y: 50 });
   const [score, setScore] = useState(0);
   const [gameEnded, setGameEnded] = useState(false);
 
   const moveHeart = () => {
-    const randomX = Math.random() * 80; // percentage
+    const randomX = Math.random() * 80;
     const randomY = Math.random() * 70;
     setPosition({ x: randomX, y: randomY });
   };
@@ -30,10 +30,15 @@ const GamePage = () => {
   }, []);
 
   return (
-    <Container maxWidth="md">
+    <Container
+      maxWidth="md"
+      sx={{
+        px: { xs: 2, sm: 3 }
+      }}
+    >
       <Box
         sx={{
-          height: '100vh',
+          minHeight: '100vh',
           position: 'relative',
           overflow: 'hidden',
           display: 'flex',
@@ -45,15 +50,34 @@ const GamePage = () => {
       >
         {!gameEnded && (
           <>
-            <Typography variant="h3" sx={{ mb: 2 }}>
+            <Typography
+              variant="h3"
+              sx={{
+                mb: 2,
+                fontSize: { xs: '1.6rem', sm: '2.2rem', md: '2.8rem' }
+              }}
+            >
               Catch My Heart 💖
             </Typography>
 
-            <Typography variant="h6" sx={{ mb: 4 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                mb: 3,
+                fontSize: { xs: '1rem', sm: '1.2rem' }
+              }}
+            >
               Catch it 5 times to win my love!
             </Typography>
 
-            <Typography variant="h5" color="primary" sx={{ mb: 6 }}>
+            <Typography
+              variant="h5"
+              color="primary"
+              sx={{
+                mb: 4,
+                fontSize: { xs: '1.2rem', sm: '1.5rem' }
+              }}
+            >
               Score: {score} / 5
             </Typography>
 
@@ -70,7 +94,12 @@ const GamePage = () => {
               }}
               onClick={handleClick}
             >
-              <FavoriteIcon sx={{ fontSize: 60, color: '#ff4d88' }} />
+              <FavoriteIcon
+                sx={{
+                  fontSize: { xs: 45, sm: 60 },
+                  color: '#ff4d88'
+                }}
+              />
             </motion.div>
           </>
         )}
@@ -97,11 +126,23 @@ const GamePage = () => {
                 padding: 20
               }}
             >
-              <Typography variant="h2" sx={{ mb: 3 }}>
+              <Typography
+                variant="h2"
+                sx={{
+                  mb: 3,
+                  fontSize: { xs: '1.8rem', sm: '2.5rem' }
+                }}
+              >
                 You Caught My Heart! ❤️
               </Typography>
 
-              <Typography variant="h4" sx={{ mb: 5 }}>
+              <Typography
+                variant="h4"
+                sx={{
+                  mb: 4,
+                  fontSize: { xs: '1.3rem', sm: '1.8rem' }
+                }}
+              >
                 Forever Yours 💞
               </Typography>
 
