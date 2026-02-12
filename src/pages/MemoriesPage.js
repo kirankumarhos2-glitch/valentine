@@ -19,11 +19,11 @@ const memories = [
     desc: "This first picture was taken on that beautiful day, and your smile was truly the most beautiful thing I had ever seen ❤️. You always look the happiest when you smile, and I want you to stay that way forever 💖. Please don’t worry about the things happening in my life — just stay calm, peaceful, and happy 💕. Focus on your career and achieve everything you dream of 🌸. I will always be by your side, no matter what happens 💞. Stay strong, stay focused, and most importantly… always stay happy 💗.",
     img: "/assets/memory5.jpg"
   },
-  {
-    title: "Chidanvi Birthday",
-    desc: "The day I cannot be forgetable",
-    img: "/assets/memory7.jpg"
-  },
+  // {
+  //   title: "Chidanvi Birthday",
+  //   desc: "The day I cannot be forgetable",
+  //   img: "/assets/memory7.jpg"
+  // },
   {
     title: "First Date",
     desc: "We were exhausted, but incredibly happy.",
