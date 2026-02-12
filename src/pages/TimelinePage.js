@@ -4,7 +4,9 @@ import {
   Typography,
   Container,
   Button,
-  Paper
+  Paper,
+  useTheme,
+  useMediaQuery
 } from '@mui/material';
 import {
   Timeline,
@@ -24,7 +26,6 @@ import { motion } from 'framer-motion';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import TempleHinduIcon from '@mui/icons-material/TempleHindu';
 import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
-import { useTheme, useMediaQuery } from '@mui/material';
 
 const timelineData = [
   {
@@ -67,7 +68,8 @@ const TimelinePage = () => {
       maxWidth="md"
       sx={{
         py: 6,
-        px: { xs: 2, sm: 3 }
+        px: { xs: 2, sm: 3 },
+        overflowX: "hidden"
       }}
     >
       <motion.div
@@ -94,9 +96,19 @@ const TimelinePage = () => {
           Every moment with you is a treasure.
         </Typography>
 
-        <Timeline position={isMobile ? "right" : "alternate"}>
+        <Timeline
+          position={isMobile ? "right" : "alternate"}
+          sx={{ p: 0, m: 0 }}
+        >
           {timelineData.map((item, index) => (
-            <TimelineItem key={index}>
+            <TimelineItem
+              key={index}
+              sx={{
+                "&::before": {
+                  display: isMobile ? "none" : "block"
+                }
+              }}
+            >
               {!isMobile && (
                 <TimelineOppositeContent
                   sx={{ m: 'auto 0' }}
@@ -141,7 +153,6 @@ const TimelinePage = () => {
 
                     <Typography
                       variant="h6"
-                      component="span"
                       color="primary"
                     >
                       {item.title}
