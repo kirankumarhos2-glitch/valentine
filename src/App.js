@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { ThemeProvider, CssBaseline, Box } from '@mui/material';
+import theme from './theme';
+
+import LandingPage from './pages/LandingPage';
+import TimelinePage from './pages/TimelinePage';
+import MemoriesPage from './pages/MemoriesPage';
+import GamePage from './pages/GamePage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box sx={{ minHeight: '100vh', width: '100vw' }}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/timeline" element={<TimelinePage />} />
+            <Route path="/memories" element={<MemoriesPage />} />
+            <Route path="/game" element={<GamePage />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </Router>
+      </Box>
+    </ThemeProvider>
   );
 }
 
