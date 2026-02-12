@@ -78,7 +78,11 @@ const CardWrapper = ({ memory, isFirst }) => (
           <Box
             sx={{
               width: { xs: "100%", md: "50%" },
-              height: { xs: 220, sm: 300, md: "auto" }
+              aspectRatio: { xs: "4 / 3", md: "auto" },
+              backgroundColor: "#f5f5f5",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
             }}
           >
             <CardMedia
@@ -86,9 +90,9 @@ const CardWrapper = ({ memory, isFirst }) => (
               image={memory.img}
               alt={memory.title}
               sx={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover"
+                maxWidth: "100%",
+                maxHeight: "100%",
+                objectFit: "contain"
               }}
             />
           </Box>
@@ -99,33 +103,22 @@ const CardWrapper = ({ memory, isFirst }) => (
               p: { xs: 2, sm: 3, md: 4 }
             }}
           >
-            <Typography
-              variant="h4"
-              gutterBottom
-              sx={{
-                fontSize: { xs: "1.5rem", sm: "2rem", md: "2.3rem" }
-              }}
-            >
+            <Typography variant="h4" gutterBottom>
               {memory.title}
             </Typography>
 
-            <Typography
-              variant="body1"
-              color="text.secondary"
-              sx={{ mb: 3 }}
-            >
+            <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
               {memory.desc}
             </Typography>
 
             <Typography
               align="center"
               sx={{
-                fontSize: { xs: "1.3rem", sm: "1.6rem" },
                 fontWeight: "bold",
+                fontSize: "1.4rem",
                 background: "linear-gradient(45deg, #ff4d88, #ff99cc)",
                 WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                letterSpacing: 2
+                WebkitTextFillColor: "transparent"
               }}
             >
               ❤️ I LOVE YOU ❤️
@@ -137,7 +130,11 @@ const CardWrapper = ({ memory, isFirst }) => (
           <Box
             sx={{
               width: "100%",
-              height: { xs: 200, sm: 230, md: 260 }
+              aspectRatio: "4 / 3",
+              backgroundColor: "#f5f5f5",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
             }}
           >
             <CardMedia
@@ -145,9 +142,9 @@ const CardWrapper = ({ memory, isFirst }) => (
               image={memory.img}
               alt={memory.title}
               sx={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover"
+                maxWidth: "100%",
+                maxHeight: "100%",
+                objectFit: "contain"
               }}
             />
           </Box>
@@ -156,7 +153,6 @@ const CardWrapper = ({ memory, isFirst }) => (
             <Typography gutterBottom variant="h6">
               {memory.title}
             </Typography>
-
             <Typography variant="body2" color="text.secondary">
               {memory.desc}
             </Typography>
@@ -171,29 +167,12 @@ const MemoriesPage = () => {
   const navigate = useNavigate();
 
   return (
-    <Container
-      maxWidth="lg"
-      sx={{
-        py: 6,
-        px: { xs: 2, sm: 3, md: 4 }
-      }}
-    >
-      <Typography
-        variant="h2"
-        align="center"
-        gutterBottom
-        sx={{
-          fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" }
-        }}
-      >
+    <Container maxWidth="lg" sx={{ py: 6, px: 3 }}>
+      <Typography variant="h2" align="center" gutterBottom>
         Captured Moments
       </Typography>
 
-      <Typography
-        variant="body1"
-        align="center"
-        sx={{ mb: 5, opacity: 0.8 }}
-      >
+      <Typography align="center" sx={{ mb: 5 }}>
         Every picture tells a beautiful story of our love.
       </Typography>
 
