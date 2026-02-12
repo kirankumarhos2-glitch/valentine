@@ -20,7 +20,7 @@ const LandingPage = () => {
 
   const handleNo = () => {
     if (noCount >= 3) {
-      setHideNo(true); // Hide NO after final click
+      setHideNo(true);
     } else {
       setNoCount(prev => prev + 1);
       setYesScale(prev => prev + 0.4);
@@ -35,7 +35,12 @@ const LandingPage = () => {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container
+      maxWidth="sm"
+      sx={{
+        px: { xs: 2, sm: 3 }
+      }}
+    >
       <Box
         sx={{
           minHeight: '100vh',
@@ -44,7 +49,7 @@ const LandingPage = () => {
           justifyContent: 'center',
           alignItems: 'center',
           textAlign: 'center',
-          gap: 6
+          gap: { xs: 4, sm: 6 }
         }}
       >
         {/* Headline */}
@@ -53,12 +58,17 @@ const LandingPage = () => {
           animate={{ scale: 1 }}
           transition={{ type: 'spring', damping: 10 }}
         >
-          <Typography variant="h2">
+          <Typography
+            variant="h2"
+            sx={{
+              fontSize: { xs: '1.8rem', sm: '2.5rem', md: '3rem' }
+            }}
+          >
             Will you be my Valentine? ❤️
           </Typography>
         </motion.div>
 
-        {/* Celebration Text (NOW BETWEEN HEADLINE & BUTTONS) */}
+        {/* Celebration Text */}
         <AnimatePresence>
           {isBlasting && (
             <motion.div
@@ -72,7 +82,7 @@ const LandingPage = () => {
                 sx={{
                   fontWeight: 'bold',
                   color: '#ff4d88',
-                  textAlign: 'center'
+                  fontSize: { xs: '1.4rem', sm: '2rem' }
                 }}
               >
                 I knew you would say YES! ❤️
@@ -85,23 +95,26 @@ const LandingPage = () => {
         <Box
           sx={{
             display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
             justifyContent: "center",
             alignItems: "center",
-            gap: 12,
-            mt: 2
+            gap: { xs: 3, sm: 6 },
+            width: "100%"
           }}
         >
           <motion.div
             animate={{ scale: yesScale }}
             transition={{ type: 'spring' }}
+            style={{ width: "100%" }}
           >
             <Button
+              fullWidth
               variant="contained"
               size="large"
               color="primary"
               onClick={handleYes}
               sx={{
-                minWidth: 160,
+                minWidth: { sm: 160 },
                 px: 5,
                 py: 1.5
               }}
@@ -112,12 +125,13 @@ const LandingPage = () => {
 
           {!hideNo && (
             <Button
+              fullWidth
               variant="outlined"
               size="large"
               color="secondary"
               onClick={handleNo}
               sx={{
-                minWidth: 160,
+                minWidth: { sm: 160 },
                 px: 5,
                 py: 1.5
               }}
@@ -127,7 +141,7 @@ const LandingPage = () => {
           )}
         </Box>
 
-        {/* Heart Explosion Background Only */}
+        {/* Heart Explosion */}
         <AnimatePresence>
           {isBlasting && (
             <Box
