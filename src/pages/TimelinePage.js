@@ -7,7 +7,7 @@ import {
   TimelineConnector, TimelineContent, TimelineDot, TimelineOppositeContent 
 } from '@mui/lab';
 import { 
-  Favorite, Restaurant, Church, LocalFlorist, Celebration 
+  Favorite, Celebration 
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
