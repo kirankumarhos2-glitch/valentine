@@ -46,12 +46,12 @@ const memories = [
   },
   {
     title: "Me and My wifes",
-    desc: "Just Look at the iamge how it was .",
+    desc: "Just Look at the image how it was.",
     img: "/assets/memory8.jpg"
   },
   {
     title: "Best pic one which i Always see",
-    desc: "I Seen it was First pic right you and me with panche and saree really your looking just like hawhhhhh!.",
+    desc: "You and me with panche and saree — truly beautiful.",
     img: "/assets/memory2.jpg"
   }
 ];
@@ -68,26 +68,17 @@ const CardWrapper = ({ memory, isFirst }) => (
         borderRadius: 4,
         overflow: "hidden",
         boxShadow: "0 8px 24px rgba(255, 77, 136, 0.15)",
-        transition: "0.4s",
-        height: "100%",
         display: "flex",
         flexDirection: isFirst ? { xs: "column", md: "row" } : "column",
-        "&:hover": {
-          transform: "translateY(-6px)"
-        }
+        height: "100%"
       }}
     >
       {isFirst ? (
         <>
-          {/* Image Left */}
           <Box
             sx={{
               width: { xs: "100%", md: "50%" },
-              height: { xs: 250, md: "auto" },
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#f5f5f5"
+              height: { xs: 220, sm: 300, md: "auto" }
             }}
           >
             <CardMedia
@@ -102,39 +93,39 @@ const CardWrapper = ({ memory, isFirst }) => (
             />
           </Box>
 
-          {/* Content Right */}
           <CardContent
             sx={{
               width: { xs: "100%", md: "50%" },
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              p: 4
+              p: { xs: 2, sm: 3, md: 4 }
             }}
           >
-            <Typography variant="h4" gutterBottom>
+            <Typography
+              variant="h4"
+              gutterBottom
+              sx={{
+                fontSize: { xs: "1.5rem", sm: "2rem", md: "2.3rem" }
+              }}
+            >
               {memory.title}
             </Typography>
 
             <Typography
               variant="body1"
               color="text.secondary"
-              sx={{ mb: 4 }}
+              sx={{ mb: 3 }}
             >
               {memory.desc}
             </Typography>
 
-            {/* Centered Stylish Love Text */}
             <Typography
               align="center"
               sx={{
-                fontSize: "1.8rem",
+                fontSize: { xs: "1.3rem", sm: "1.6rem" },
                 fontWeight: "bold",
                 background: "linear-gradient(45deg, #ff4d88, #ff99cc)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                letterSpacing: 3,
-                mt: 2
+                letterSpacing: 2
               }}
             >
               ❤️ I LOVE YOU ❤️
@@ -143,15 +134,10 @@ const CardWrapper = ({ memory, isFirst }) => (
         </>
       ) : (
         <>
-          {/* Normal Cards */}
           <Box
             sx={{
               width: "100%",
-              height: 260,
-              backgroundColor: "#f5f5f5",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center"
+              height: { xs: 200, sm: 230, md: 260 }
             }}
           >
             <CardMedia
@@ -159,9 +145,9 @@ const CardWrapper = ({ memory, isFirst }) => (
               image={memory.img}
               alt={memory.title}
               sx={{
-                maxWidth: "100%",
-                maxHeight: "100%",
-                objectFit: "contain"
+                width: "100%",
+                height: "100%",
+                objectFit: "cover"
               }}
             />
           </Box>
@@ -185,21 +171,38 @@ const MemoriesPage = () => {
   const navigate = useNavigate();
 
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
-      <Typography variant="h2" align="center" gutterBottom>
+    <Container
+      maxWidth="lg"
+      sx={{
+        py: 6,
+        px: { xs: 2, sm: 3, md: 4 }
+      }}
+    >
+      <Typography
+        variant="h2"
+        align="center"
+        gutterBottom
+        sx={{
+          fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" }
+        }}
+      >
         Captured Moments
       </Typography>
 
-      <Typography variant="body1" align="center" sx={{ mb: 6, opacity: 0.8 }}>
+      <Typography
+        variant="body1"
+        align="center"
+        sx={{ mb: 5, opacity: 0.8 }}
+      >
         Every picture tells a beautiful story of our love.
       </Typography>
 
-      <Grid container spacing={4}>
+      <Grid container spacing={3}>
         {memories.map((memory, index) => (
           <Grid
             item
             xs={12}
-            sm={index === 0 ? 12 : 6}
+            sm={6}
             md={index === 0 ? 12 : 4}
             key={index}
           >
@@ -208,7 +211,7 @@ const MemoriesPage = () => {
         ))}
       </Grid>
 
-      <Box sx={{ textAlign: "center", mt: 8 }}>
+      <Box sx={{ textAlign: "center", mt: 6 }}>
         <Button
           variant="contained"
           size="large"
