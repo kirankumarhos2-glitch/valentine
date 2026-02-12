@@ -1,45 +1,56 @@
 import React from 'react';
-import { 
-  Box, Typography, Container, Button, Paper 
+import {
+  Box,
+  Typography,
+  Container,
+  Button,
+  Paper
 } from '@mui/material';
-import { 
-  Timeline, TimelineItem, TimelineSeparator, 
-  TimelineConnector, TimelineContent, TimelineDot, TimelineOppositeContent 
+import {
+  Timeline,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDot,
+  TimelineOppositeContent
 } from '@mui/lab';
-import { 
-  Favorite, Celebration 
+import {
+  Favorite,
+  Celebration
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import TempleHinduIcon from '@mui/icons-material/TempleHindu';
 import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
+import { useTheme, useMediaQuery } from '@mui/material';
 
 const timelineData = [
   {
     date: "Nov 29, 2023",
     title: "First Day You Confessed",
-    desc:  "It all happened in an Instagram chat — your unexpected confession moment even more unforgettable",
-   icon: <FavoriteIcon />,
+    desc: "It all happened in an Instagram chat — your unexpected confession made that moment unforgettable.",
+    icon: <FavoriteIcon />,
     color: 'primary'
   },
   {
     date: "Feb 14, 2024",
     title: "Temple Visit",
     desc: "At the Shiva temple, I placed the first ring on your finger — a moment I'll cherish forever.",
-   icon: <TempleHinduIcon />,
+    icon: <TempleHinduIcon />,
     color: 'secondary'
   },
   {
     date: "July 6-8, 2024",
     title: "First Bike Trip",
-    desc: "Our first bike trip together — three days of wind, laughter, and unforgettable memories.",
+    desc: "Three days of wind, laughter, and unforgettable memories.",
     icon: <TwoWheelerIcon />,
     color: 'error'
   },
   {
-    date: "Jan 1 , 2025",
-    title: "New Year Ever",
+    date: "Jan 1, 2025",
+    title: "New Year Promise",
     desc: "Promised to stay together through all the coming years.",
     icon: <Celebration />,
     color: 'warning'
@@ -48,32 +59,55 @@ const timelineData = [
 
 const TimelinePage = () => {
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Container maxWidth="md" sx={{ py: 8 }}>
+    <Container
+      maxWidth="md"
+      sx={{
+        py: 6,
+        px: { xs: 2, sm: 3 }
+      }}
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <Typography variant="h2" align="center" gutterBottom>
+        <Typography
+          variant="h2"
+          align="center"
+          gutterBottom
+          sx={{
+            fontSize: { xs: '1.8rem', sm: '2.5rem', md: '3rem' }
+          }}
+        >
           Our Beautiful Journey
         </Typography>
-        <Typography variant="body1" align="center" sx={{ mb: 6, opacity: 0.8 }}>
+
+        <Typography
+          variant="body1"
+          align="center"
+          sx={{ mb: 5, opacity: 0.8 }}
+        >
           Every moment with you is a treasure.
         </Typography>
 
-        <Timeline position="alternate">
+        <Timeline position={isMobile ? "right" : "alternate"}>
           {timelineData.map((item, index) => (
             <TimelineItem key={index}>
-              <TimelineOppositeContent
-                sx={{ m: 'auto 0' }}
-                align="right"
-                variant="body2"
-                color="text.secondary"
-              >
-                {item.date}
-              </TimelineOppositeContent>
+              {!isMobile && (
+                <TimelineOppositeContent
+                  sx={{ m: 'auto 0' }}
+                  align="right"
+                  variant="body2"
+                  color="text.secondary"
+                >
+                  {item.date}
+                </TimelineOppositeContent>
+              )}
+
               <TimelineSeparator>
                 <TimelineConnector />
                 <TimelineDot color={item.color}>
@@ -81,16 +115,41 @@ const TimelinePage = () => {
                 </TimelineDot>
                 <TimelineConnector />
               </TimelineSeparator>
-              <TimelineContent sx={{ py: '12px', px: 2 }}>
+
+              <TimelineContent sx={{ py: 2, px: 2 }}>
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 200 }}
                 >
-                  <Paper elevation={3} sx={{ p: 2, borderRadius: 3 }}>
-                    <Typography variant="h6" component="span" color="primary">
+                  <Paper
+                    elevation={3}
+                    sx={{
+                      p: 2,
+                      borderRadius: 3
+                    }}
+                  >
+                    {isMobile && (
+                      <Typography
+                        variant="caption"
+                        color="text.secondary"
+                        display="block"
+                        sx={{ mb: 1 }}
+                      >
+                        {item.date}
+                      </Typography>
+                    )}
+
+                    <Typography
+                      variant="h6"
+                      component="span"
+                      color="primary"
+                    >
                       {item.title}
                     </Typography>
-                    <Typography>{item.desc}</Typography>
+
+                    <Typography variant="body2">
+                      {item.desc}
+                    </Typography>
                   </Paper>
                 </motion.div>
               </TimelineContent>
@@ -98,10 +157,10 @@ const TimelinePage = () => {
           ))}
         </Timeline>
 
-        <Box sx={{ textAlign: 'center', mt: 8 }}>
-          <Button 
-            variant="contained" 
-            size="large" 
+        <Box sx={{ textAlign: 'center', mt: 6 }}>
+          <Button
+            variant="contained"
+            size="large"
             onClick={() => navigate('/memories')}
             endIcon={<Favorite />}
           >
