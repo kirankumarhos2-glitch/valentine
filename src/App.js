@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider, CssBaseline, Box } from '@mui/material';
 import theme from './theme';
 
@@ -12,17 +12,22 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box sx={{ minHeight: '100vh', width: '100vw' }}>
-        <Router>
+      <BrowserRouter>
+        <Box
+          sx={{
+            minHeight: '100vh',
+            overflowX: 'hidden'   // prevents mobile horizontal scroll
+          }}
+        >
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/timeline" element={<TimelinePage />} />
             <Route path="/memories" element={<MemoriesPage />} />
             <Route path="/game" element={<GamePage />} />
-            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-        </Router>
-      </Box>
+        </Box>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
