@@ -22,7 +22,7 @@ const memories = [
   {
     title: "Chidanvi Birthday",
     desc: "The day I cannot be forgetable",
-    img: "/assets/memory1.jpg"
+    img: "/assets/memory7.jpg"
   },
   {
     title: "First Date",
