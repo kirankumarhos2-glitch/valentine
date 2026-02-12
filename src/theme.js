@@ -1,10 +1,10 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
-const theme = createTheme({
+let theme = createTheme({
   palette: {
     primary: {
-      main: '#ff4d88', // Deep pink
-      contrastText: '#fff',
+      main: '#ff4d88',
+      contrastText: '#ffffff',
     },
     secondary: {
       main: '#ff1a75',
@@ -14,8 +14,10 @@ const theme = createTheme({
       paper: '#ffffff',
     },
   },
+
   typography: {
     fontFamily: "'Quicksand', sans-serif",
+
     h1: {
       fontFamily: "'Dancing Script', cursive",
       fontWeight: 700,
@@ -35,22 +37,39 @@ const theme = createTheme({
       fontFamily: "'Dancing Script', cursive",
       fontWeight: 700,
     },
+
     body1: {
-      fontSize: '1.1rem',
-    }
+      fontSize: '1rem',
+    },
+    body2: {
+      fontSize: '0.95rem',
+    },
   },
+
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 25,
+          borderRadius: 30,
           textTransform: 'none',
-          padding: '10px 30px',
-          fontSize: '1.1rem',
+          padding: '10px 28px',
+          fontSize: '1rem',
+          transition: 'all 0.3s ease',
+        },
+      },
+    },
+
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          borderRadius: 16,
         },
       },
     },
   },
 });
+
+// Makes typography automatically responsive
+theme = responsiveFontSizes(theme);
 
 export default theme;
